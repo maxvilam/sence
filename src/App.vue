@@ -1,12 +1,41 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
+    <b-navbar toggleable="lg" type="dark" variant="dark">
+      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+      <b-collapse id="nav-collapse" is-nav>
+        <b-navbar-nav>
+          <b-nav-item href="#"
+            ><router-link to="/">Home</router-link></b-nav-item
+          >
+          <b-nav-item href="#"
+            ><router-link to="/EquiposAccesorios">
+              Equipos</router-link
+            ></b-nav-item
+          >
+          <b-nav-item href="#">Planes</b-nav-item>
+          <b-nav-item href="#">Prepago</b-nav-item>
+          <b-nav-item href="#">Oficina Virtual</b-nav-item>
+        </b-navbar-nav>
+
+        <!-- Right aligned nav items -->
+      </b-collapse>
+    </b-navbar>
     <router-view />
   </div>
 </template>
+<script>
+import { mapActions } from "vuex";
+export default {
+  name: "App",
+  methods: {
+    ...mapActions(["getEquipos"]),
+  },
+  created() {
+    this.getEquipos();
+  },
+};
+</script>
 
 <style lang="scss">
 #app {
